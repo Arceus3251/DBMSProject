@@ -33,7 +33,8 @@ public class FrontEnd {
         helpMenu.add(aboutButton);
         mb.add(helpMenu);
         JLabel welcomeLabel = new JLabel("Welcome to the SHSU ESports Repository!");
-        //Creating the table for Data to be viewed
+        //Commented out to be used as a template, changing this
+        /*Creating the table for Data to be viewed
         String[] columnNames = {"Test1", "Test2", "Test3"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
@@ -44,8 +45,31 @@ public class FrontEnd {
         JScrollPane scroll = new JScrollPane(dataTable);
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+         */
+
+        //Creating a Panel for selection Buttons
+        JPanel selectionPanel = new JPanel();
+        GridLayout selectLayout = new GridLayout(3,1);
+        selectionPanel.setLayout(selectLayout);
+        JButton studentViewButton = new JButton("Student Viewer");
+        JButton proficiencyViewer = new JButton("Proficiency Viewer");
+        JButton gameViewer = new JButton("Game Viewer");
+        studentViewButton.addActionListener(e->{
+            //Bring up a window that shows a table for Students
+        });
+        proficiencyViewer.addActionListener(e->{
+            //Bring up a window that shows a table for Proficiencies
+        });
+        gameViewer.addActionListener(e->{
+           //Bring up a window that shows a table for Games
+        });
+        selectionPanel.add(studentViewButton);
+        selectionPanel.add(proficiencyViewer);
+        selectionPanel.add(gameViewer);
+
         //Adding components to the main Display Frame
-        mainFrame.add(scroll);
+        //mainFrame.add(scroll);
+        mainFrame.add(selectionPanel);
         mainFrame.add(BorderLayout.NORTH, mb);
         mainFrame.add(BorderLayout.AFTER_LAST_LINE, welcomeLabel);
         mainFrame.setVisible(true);

@@ -23,7 +23,7 @@ public class FrontEnd {
         mb.add(viewMenu);
         JMenu helpMenu = new JMenu("Help");
         JMenuItem helpButton = new JMenuItem("Help");
-        helpButton.addActionListener(e-> JOptionPane.showMessageDialog(null, "TBD", "Help", JOptionPane.INFORMATION_MESSAGE));
+        helpButton.addActionListener(e-> JOptionPane.showMessageDialog(null, "No.", "Help", JOptionPane.INFORMATION_MESSAGE));
         JMenuItem aboutButton = new JMenuItem("About");
         aboutButton.addActionListener(e-> JOptionPane.showMessageDialog(null, "SHSU ESports Repository created by:\n" +
                 "Waleed Afroze, Josh Staples, Adam Seltzer, and Preston Truong\n" +

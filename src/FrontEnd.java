@@ -54,15 +54,9 @@ public class FrontEnd {
         JButton studentViewButton = new JButton("Student Viewer");
         JButton proficiencyViewer = new JButton("Proficiency Viewer");
         JButton gameViewer = new JButton("Game Viewer");
-        studentViewButton.addActionListener(e->{
-            //Bring up a window that shows a table for Students
-        });
-        proficiencyViewer.addActionListener(e->{
-            //Bring up a window that shows a table for Proficiencies
-        });
-        gameViewer.addActionListener(e->{
-           //Bring up a window that shows a table for Games
-        });
+        studentViewButton.addActionListener(e->new StudentView());
+        proficiencyViewer.addActionListener(e->new ProficiencyView());
+        gameViewer.addActionListener(e->new GameView());
         selectionPanel.add(studentViewButton);
         selectionPanel.add(proficiencyViewer);
         selectionPanel.add(gameViewer);

@@ -33,20 +33,6 @@ public class FrontEnd {
         helpMenu.add(aboutButton);
         mb.add(helpMenu);
         JLabel welcomeLabel = new JLabel("Welcome to the SHSU ESports Repository!");
-        //Commented out to be used as a template, changing this
-        /*Creating the table for Data to be viewed
-        String[] columnNames = {"Test1", "Test2", "Test3"};
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(columnNames);
-        JTable dataTable = new JTable();
-        dataTable.setModel(model);
-        dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        dataTable.setFillsViewportHeight(true);
-        JScrollPane scroll = new JScrollPane(dataTable);
-        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-         */
-
         //Creating a Panel for selection Buttons
         JPanel selectionPanel = new JPanel();
         GridLayout selectLayout = new GridLayout(3,1);
@@ -80,7 +66,6 @@ public class FrontEnd {
         selectionPanel.add(gameViewer);
 
         //Adding components to the main Display Frame
-        //mainFrame.add(scroll);
         mainFrame.add(selectionPanel);
         mainFrame.add(BorderLayout.NORTH, mb);
         mainFrame.add(BorderLayout.AFTER_LAST_LINE, welcomeLabel);

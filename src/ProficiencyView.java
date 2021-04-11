@@ -24,17 +24,18 @@ public class ProficiencyView extends JFrame {
         catch(SQLException ex){
             System.err.println("SQLException: "+ex.getMessage());
             System.err.println("SQLState: "+ex.getSQLState());
-            System.err.println("VenderError:"+ ex.getErrorCode());
+            System.err.println("VendorError:"+ ex.getErrorCode());
         }
         //Creating an Actual table to display data.
         String[] ColumnHeaders = {"Sam ID", "Game ID", "Skill", "Hours Played"};
         JTable table = new JTable(getTable(conn), ColumnHeaders);
         //Adds everything to frame
         this.add(BorderLayout.NORTH, topPanel);
+        this.add(new JScrollPane(table));
         this.setVisible(true);
     }
     //Gathers the data to be viewed in a JTable
-    public static String[][] getTable(Connection con) throws SQLException {
+    public static String[][] getTable(Connection con) {
         String query = "select * from proficiency";
         ArrayList<String[]> masterList = new ArrayList<>();
         try (Statement stmt = con.createStatement()) {
@@ -47,8 +48,7 @@ public class ProficiencyView extends JFrame {
                 tempList[3] = rs.getString("HoursPlayed");
                 masterList.add(tempList);
             }
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ignore) {
         }
         String[][] data = new String[masterList.size()][4];
         for(int i = 0;i<masterList.size()-1;i++){

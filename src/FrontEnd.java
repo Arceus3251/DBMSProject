@@ -1,6 +1,6 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class FrontEnd {
     public static void main(String[] args){
@@ -54,9 +54,27 @@ public class FrontEnd {
         JButton studentViewButton = new JButton("Student Viewer");
         JButton proficiencyViewer = new JButton("Proficiency Viewer");
         JButton gameViewer = new JButton("Game Viewer");
-        studentViewButton.addActionListener(e->new StudentView());
-        proficiencyViewer.addActionListener(e->new ProficiencyView());
-        gameViewer.addActionListener(e->new GameView());
+        studentViewButton.addActionListener(e-> {
+            try {
+                new StudentView();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+        proficiencyViewer.addActionListener(e-> {
+            try {
+                new ProficiencyView();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+        gameViewer.addActionListener(e-> {
+            try {
+                new GameView();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
         selectionPanel.add(studentViewButton);
         selectionPanel.add(proficiencyViewer);
         selectionPanel.add(gameViewer);

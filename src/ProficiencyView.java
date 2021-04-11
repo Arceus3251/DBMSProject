@@ -19,7 +19,7 @@ public class ProficiencyView extends JFrame {
         //First Establishing a connection to MySQL
         Connection conn = null;
         try{
-            conn= DriverManager.getConnection("jdbc:mysql://localhost/test?"+"user=root&password=root");
+            conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db"+"user=root&password=hongvy123");
         }
         catch(SQLException ex){
             System.err.println("SQLException: "+ex.getMessage());
@@ -35,7 +35,7 @@ public class ProficiencyView extends JFrame {
     }
     //Gathers the data to be viewed in a JTable
     public static String[][] getTable(Connection con) throws SQLException {
-        String query = "select COF_NAME, SUP_ID, PRICE, SALES, TOTAL from COFFEES";
+        String query = "select * from proficiency";
         ArrayList<String[]> masterList = new ArrayList<>();
         try (Statement stmt = con.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);

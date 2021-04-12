@@ -45,7 +45,7 @@ public class GameView extends JFrame {
         Connection finalConn = conn;
         searchButton.addActionListener(e->{
             System.out.println("The Query is: "+"select "+comboBox.getSelectedItem()+" from game where = "+searchField.getText());
-            QUERY = "The Query is: "+"select "+comboBox.getSelectedItem()+" from game where = "+searchField.getText();
+            QUERY = "select "+comboBox.getSelectedItem()+" from game where = "+searchField.getText();
             try {
                 table = getTable(finalConn);
             } catch (SQLException throwables) {
@@ -63,7 +63,7 @@ public class GameView extends JFrame {
     public static JTable getTable(Connection con) throws SQLException {
         String[] columnHeaders = {"GameID", "Name", "Developer", "Platform", "Mode", "Genre"};
         String query = "";
-        if(QUERY=="") {
+        if(QUERY.equals("")) {
             query = "select * from game";
         }
         else{

@@ -21,7 +21,7 @@ public class GameView extends JFrame {
         comboBox.addItem("Genre");
         comboBox.addItem("Platform");
         comboBox.addItem("Mode");
-        comboBox.addItem("Game ID");
+        comboBox.addItem("Game_ID");
         comboBox.addItem("Name");
         comboBox.addItem("Developer");
         JTextPane searchField = new JTextPane();
@@ -35,7 +35,7 @@ public class GameView extends JFrame {
         //Creating an Actual table to display data.
         searchButton.addActionListener(e->{
             System.out.println("The Query is: "+"select "+comboBox.getSelectedItem()+" from game where = "+searchField.getText());
-            QUERY = "select "+comboBox.getSelectedItem()+" from game where = "+searchField.getText();
+            QUERY = "select "+comboBox.getSelectedItem()+" from shsu_gaming_db.game where "+searchField.getText();
             try {
                 table = getTable();
             } catch (SQLException throwables) {
@@ -53,7 +53,7 @@ public class GameView extends JFrame {
     public static JTable getTable() throws SQLException {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db" + "user=root&password=hongvy123");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hongvy123");
             String[] columnHeaders = {"Sam ID", "Name", "In Game Name", "Gender", "Age", "Email"};
             String query = "";
             if (QUERY.equals("")) {

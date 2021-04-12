@@ -18,9 +18,9 @@ public class StudentView extends JFrame {
         JLabel inputQuery = new JLabel("Input Query: ");
         JComboBox<String> comboBox = new JComboBox<>();
         comboBox.setEditable(false);
-        comboBox.addItem("Sam ID");
+        comboBox.addItem("Sam_ID");
         comboBox.addItem("Name");
-        comboBox.addItem("In Game Name");
+        comboBox.addItem("In_Game_Name");
         comboBox.addItem("Gender");
         comboBox.addItem("Age");
         comboBox.addItem("Email");
@@ -31,21 +31,10 @@ public class StudentView extends JFrame {
         topBarPanel.add(searchField);
         topBarPanel.add(searchButton);
         //Setting up the table environment
-        //First Establishing a connection to MySQL
-        Connection conn = null;
-        try{
-            conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db"+"user=root&password=hongvy123");
-        }
-        catch(SQLException ex){
-            System.err.println("SQLException: "+ex.getMessage());
-            System.err.println("SQLState: "+ex.getSQLState());
-            System.err.println("VenderError:"+ ex.getErrorCode());
-        }
         //Creating an Actual table to display data.
-        Connection finalConn = conn;
         searchButton.addActionListener(e->{
             System.out.println("The Query is: "+"select "+comboBox.getSelectedItem()+" from student where = "+searchField.getText());
-            QUERY = "select "+comboBox.getSelectedItem()+" from student where = "+searchField.getText();
+            QUERY = "select "+comboBox.getSelectedItem()+" from student where "+searchField.getText();
             try {
                 table = getTable();
             } catch (SQLException throwables) {
@@ -63,7 +52,7 @@ public class StudentView extends JFrame {
     public static JTable getTable() throws SQLException {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db" + "user=root&password=hongvy123");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hongvy123");
             String[] columnHeaders = {"Sam ID", "Name", "In Game Name", "Gender", "Age", "Email"};
             String query = "";
             if (QUERY.equals("")) {

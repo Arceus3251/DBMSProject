@@ -18,10 +18,10 @@ public class ProficiencyView extends JFrame {
         JLabel inputQuery = new JLabel("Input Query: ");
         JComboBox<String> comboBox = new JComboBox<>();
         comboBox.setEditable(false);
-        comboBox.addItem("Sam ID");
-        comboBox.addItem("Game ID");
+        comboBox.addItem("Sam_ID");
+        comboBox.addItem("Game_ID");
         comboBox.addItem("Skill");
-        comboBox.addItem("Hours Played");
+        comboBox.addItem("Hours_Played");
         JTextPane searchField = new JTextPane();
         JButton searchButton = new JButton("Search!");
         topBarPanel.add(inputQuery);
@@ -33,7 +33,7 @@ public class ProficiencyView extends JFrame {
         //Creating an Actual table to display data.
         searchButton.addActionListener(e->{
             System.out.println("The Query is: "+"select "+comboBox.getSelectedItem()+" from proficiency where = "+searchField.getText());
-            QUERY = "select "+comboBox.getSelectedItem()+" from proficiency where = "+searchField.getText();
+            QUERY = "select "+comboBox.getSelectedItem()+" from proficiency where "+searchField.getText();
             try {
                 table = getTable();
             } catch (SQLException throwables) {
@@ -51,7 +51,7 @@ public class ProficiencyView extends JFrame {
     public static JTable getTable() throws SQLException {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db" + "user=root&password=hongvy123");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hognvy123");
             String[] columnHeaders = {"Sam ID", "Game ID", "Skill", "Hours Played"};
             String query = "";
             if (QUERY.equals("")) {
@@ -64,10 +64,10 @@ public class ProficiencyView extends JFrame {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
                     String[] tempList = new String[4];
-                    tempList[0] = rs.getString("SamID");
-                    tempList[1] = rs.getString("GameID");
-                    tempList[2] = rs.getString("Skill");
-                    tempList[3] = rs.getString("Hours Played");
+                    tempList[0] = rs.getString(1);
+                    tempList[1] = rs.getString(2);
+                    tempList[2] = rs.getString(3);
+                    tempList[3] = rs.getString(4);
                     masterList.add(tempList);
                 }
             String[][] data = new String[masterList.size()][4];

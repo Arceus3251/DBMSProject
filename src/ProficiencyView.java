@@ -33,7 +33,7 @@ public class ProficiencyView extends JFrame {
         //Creating an Actual table to display data.
         searchButton.addActionListener(e->{
             System.out.println("The Query is: "+"select "+comboBox.getSelectedItem()+" from proficiency where = "+searchField.getText());
-            QUERY = "select "+comboBox.getSelectedItem()+" from proficiency where "+searchField.getText();
+            QUERY = "select "+comboBox.getSelectedItem()+" from shsu_gaming_db.proficiency where "+searchField.getText();
             try {
                 table = getTable();
             } catch (SQLException throwables) {
@@ -51,7 +51,7 @@ public class ProficiencyView extends JFrame {
     public static JTable getTable() throws SQLException {
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hognvy123");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hongvy123");
             String[] columnHeaders = {"Sam ID", "Game ID", "Skill", "Hours Played"};
             String query = "";
             if (QUERY.equals("")) {

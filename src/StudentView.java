@@ -53,7 +53,7 @@ public class StudentView extends JFrame {
         Connection conn;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hongvy123");
-            String[] columnHeaders = {"Sam ID", "Name", "In Game Name", "Gender", "Age", "Email"};
+            String[] columnHeaders = {"Sam ID", "Name", "In Game Name", "Gender", "Age", "Email", "Discord Name"};
             String query = "";
             if (QUERY.equals("")) {
                 query = "select * from student";
@@ -64,16 +64,17 @@ public class StudentView extends JFrame {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String[] tempList = new String[6];
+                String[] tempList = new String[7];
                 tempList[0] = rs.getString(1);
                 tempList[1] = rs.getString(2);
                 tempList[2] = rs.getString(3);
                 tempList[3] = rs.getString(4);
                 tempList[4] = rs.getString(5);
                 tempList[5] = rs.getString(6);
+                tempList[6] = rs.getString(7);
                 masterList.add(tempList);
             }
-            String[][] data = new String[masterList.size()][6];
+            String[][] data = new String[masterList.size()][7];
             for (int i = 0; i < masterList.size() - 1; i++) {
                 data[i][0] = masterList.get(i)[0];
                 data[i][1] = masterList.get(i)[1];
@@ -81,6 +82,7 @@ public class StudentView extends JFrame {
                 data[i][3] = masterList.get(i)[3];
                 data[i][4] = masterList.get(i)[4];
                 data[i][5] = masterList.get(i)[5];
+                data[i][6] = masterList.get(i)[6];
             }
             return new JTable(data, columnHeaders);
         } catch (SQLException e) {

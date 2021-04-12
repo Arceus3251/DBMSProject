@@ -71,6 +71,7 @@ public class GameView extends JFrame {
                 tempList[2] = rs.getString(3);
                 tempList[3] = rs.getString(4);
                 tempList[4] = rs.getString(5);
+                tempList[5] = rs.getString(6);
                 masterList.add(tempList);
             }
             String[][] data = new String[masterList.size()][6];
@@ -80,6 +81,7 @@ public class GameView extends JFrame {
                 data[i][2] = masterList.get(i)[2];
                 data[i][3] = masterList.get(i)[3];
                 data[i][4] = masterList.get(i)[4];
+                data[i][5] = masterList.get(i)[5];
             }
             return new JTable(data, columnHeaders);
         } catch (SQLException e) {

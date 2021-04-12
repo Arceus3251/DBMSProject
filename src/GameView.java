@@ -18,12 +18,12 @@ public class GameView extends JFrame {
         JLabel inputQuery = new JLabel("Input Query: ");
         JComboBox<String> comboBox = new JComboBox<>();
         comboBox.setEditable(false);
-        comboBox.addItem("Genre");
-        comboBox.addItem("Platform");
-        comboBox.addItem("Mode");
         comboBox.addItem("Game_ID");
         comboBox.addItem("Name");
         comboBox.addItem("Developer");
+        comboBox.addItem("Genre");
+        comboBox.addItem("Mode");
+        comboBox.addItem("Platform");
         JTextPane searchField = new JTextPane();
         JButton searchButton = new JButton("Search!");
         topBarPanel.add(inputQuery);
@@ -54,10 +54,10 @@ public class GameView extends JFrame {
         Connection conn;
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shsu_gaming_db","root","hongvy123");
-            String[] columnHeaders = {"Sam ID", "Name", "In Game Name", "Gender", "Age", "Email"};
+            String[] columnHeaders = {"Game ID", "Name", "Developer", "Genre", "Mode", "Platform"};
             String query = "";
             if (QUERY.equals("")) {
-                query = "select * from student";
+                query = "select * from game";
             } else {
                 query = QUERY;
             }

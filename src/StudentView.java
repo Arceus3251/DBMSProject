@@ -27,7 +27,10 @@ public class StudentView extends JFrame {
 
                 throwables.printStackTrace();
             }
-            repaint();
+            this.removeAll();
+            this.add(BorderLayout.NORTH, topBarPanel);
+            this.add(new JScrollPane(table));
+            this.setVisible(true);
         });
         topBarPanel.add(searchLabel);
         topBarPanel.add(searchField);

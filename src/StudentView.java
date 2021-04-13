@@ -2,7 +2,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class StudentView extends JFrame {
@@ -56,16 +55,16 @@ public class StudentView extends JFrame {
             ResultSetMetaData metaData = rs.getMetaData();
 
             // names of columns
-            Vector<String> columnNames = new Vector<String>();
+            Vector<String> columnNames = new Vector<>();
             int columnCount = metaData.getColumnCount();
             for (int column = 1; column <= columnCount; column++) {
                 columnNames.add(metaData.getColumnName(column));
             }
 
             // data of the table
-            Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+            Vector<Vector<Object>> data = new Vector<>();
             while (rs.next()) {
-                Vector<Object> vector = new Vector<Object>();
+                Vector<Object> vector = new Vector<>();
                 for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
                     vector.add(rs.getObject(columnIndex));
                 }
@@ -74,8 +73,7 @@ public class StudentView extends JFrame {
 
             return new JTable(new DefaultTableModel(data, columnNames));
 
-        } catch (SQLException e) {
-            System.err.println(e);
+        } catch (SQLException ignore) {
             return null;
         }
     }

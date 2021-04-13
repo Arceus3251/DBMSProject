@@ -62,6 +62,9 @@ public class StudentView extends JFrame {
             }
             table.updateUI();
         });
+        topBarPanel.add(searchLabel);
+        topBarPanel.add(searchField);
+        topBarPanel.add(searchButton);
         table = getTable();
         //Adds everything to frame
         this.add(BorderLayout.NORTH, topBarPanel);
